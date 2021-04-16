@@ -1,0 +1,44 @@
+package raycook.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Hotel {
+    @Id
+    // I used GenerationType.IDENTITY instead so SEQUENCE due to Hibernate having a mapping for SEQUENCE. Not sure
+    // why this happens with the H2 DB.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String name;
+    private int classification;
+    private boolean isOpen;
+
+    protected Hotel() {
+
+    }
+
+    public Hotel(String name, int classification, boolean isOpen){
+        this.name = name;
+        this.classification = classification;
+        this.isOpen = isOpen;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getClassification() {
+        return classification;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+}
